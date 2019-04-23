@@ -1,4 +1,4 @@
-package com.ashraf007.expandableselectionview
+package com.ashraf007.selection_view_sample.view
 
 import android.content.Context
 import android.util.AttributeSet

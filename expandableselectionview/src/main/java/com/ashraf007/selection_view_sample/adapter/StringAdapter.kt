@@ -1,4 +1,4 @@
-package com.ashraf007.expandableselectionview
+package com.ashraf007.selection_view_sample.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.areeb.doobocore.R
+import com.ashraf007.expandableselectionview.R
+import com.ashraf007.selection_view_sample.view.ExpandableSelectionView
 
-class StringAdapter(private val items: List<String>, private val hint: String?) : ExpandableItemAdapter {
+class StringAdapter(private val items: List<String>, private val hint: String? = null) :
+    ExpandableItemAdapter {
 
     @SuppressLint("SetTextI18n")
     override fun bindItemView(itemView: View, position: Int) {

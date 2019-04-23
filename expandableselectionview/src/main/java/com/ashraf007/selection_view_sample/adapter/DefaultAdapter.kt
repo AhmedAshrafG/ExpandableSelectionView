@@ -1,8 +1,9 @@
-package com.ashraf007.expandableselectionview
+package com.ashraf007.selection_view_sample.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ashraf007.selection_view_sample.view.ExpandableSelectionView
 
 class DefaultAdapter : ExpandableItemAdapter {
     override fun getHeaderView(inflater: LayoutInflater, parent: ViewGroup) = View(parent.context)

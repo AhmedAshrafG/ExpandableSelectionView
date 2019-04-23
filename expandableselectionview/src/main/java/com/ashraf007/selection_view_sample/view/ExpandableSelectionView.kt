@@ -1,6 +1,5 @@
-package com.ashraf007.expandableselectionview
+package com.ashraf007.selection_view_sample.view
 
-import android.animation.LayoutTransition
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -9,25 +8,17 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.areeb.doobocore.R
-import com.areeb.doobocore.ext.dpToPixels
+import com.ashraf007.expandableselectionview.R
+import com.ashraf007.selection_view_sample.adapter.DefaultAdapter
+import com.ashraf007.selection_view_sample.adapter.ExpandableItemAdapter
+import com.ashraf007.selection_view_sample.adapter.ExpandableItemRecyclerAdapter
+import com.ashraf007.selection_view_sample.dpToPixels
 
 public abstract class ExpandableSelectionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
-
-    sealed class State {
-        object Expanded : State()
-        object Collapsed : State()
-
-        operator fun not(): State =
-            when (this) {
-                Expanded -> Collapsed
-                Collapsed -> Expanded
-            }
-    }
 
     private val inflater: LayoutInflater by lazy { LayoutInflater.from(context) }
     private lateinit var headerView: View
@@ -67,7 +58,12 @@ public abstract class ExpandableSelectionView @JvmOverloads constructor(
         }
 
     private val recyclerAdapter: ExpandableItemRecyclerAdapter by lazy {
-        ExpandableItemRecyclerAdapter(expandableSelectionAdapter, showDividers, this::handleItemClick, this::isSelected)
+        ExpandableItemRecyclerAdapter(
+            expandableSelectionAdapter,
+            showDividers,
+            this::handleItemClick,
+            this::isSelected
+        )
     }
 
     public var nothingSelectedListener: (() -> Unit)? = null
@@ -75,9 +71,6 @@ public abstract class ExpandableSelectionView @JvmOverloads constructor(
     init {
         orientation = VERTICAL
         val padding = context.dpToPixels(VIEW_PADDING)
-        val lt = LayoutTransition()
-        lt.setDuration(ANIMATION_DURATION)
-        layoutTransition = lt
 
         val viewGroup = rootView as ViewGroup
         contentLayout = LinearLayout(context)
@@ -87,7 +80,6 @@ public abstract class ExpandableSelectionView @JvmOverloads constructor(
         errorLabel = inflater.inflate(R.layout.error_label, viewGroup, false) as TextView
 
         contentLayout.orientation = VERTICAL
-        contentLayout.layoutTransition = lt
         contentLayout.setPadding(padding, padding, padding, padding)
 
         this.addView(contentLayout)
@@ -108,7 +100,9 @@ public abstract class ExpandableSelectionView @JvmOverloads constructor(
 
     private fun initState() {
         expandableSelectionAdapter.bindSelectedItem(headerView, selectedIndices)
-        expandableSelectionAdapter.onExpandableStateChanged(headerView, State.Collapsed)
+        expandableSelectionAdapter.onExpandableStateChanged(headerView,
+            State.Collapsed
+        )
         collapse()
     }
 
@@ -120,7 +114,8 @@ public abstract class ExpandableSelectionView @JvmOverloads constructor(
     }
 
     private fun drawWithAttrs(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableSelectionView, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs,
+            R.styleable.ExpandableSelectionView, 0, 0)
         val bgDrawable = typedArray.getDrawable(R.styleable.ExpandableSelectionView_background)
         maxHeight = typedArray.getLayoutDimension(R.styleable.ExpandableSelectionView_maximumHeight, maxHeight)
         showDividers = typedArray.getBoolean(R.styleable.ExpandableSelectionView_dividerVisibility, showDividers)
@@ -178,12 +173,19 @@ public abstract class ExpandableSelectionView @JvmOverloads constructor(
         recyclerAdapter.notifyItemChanged(index)
     }
 
+    sealed class State {
+        object Expanded : State()
+        object Collapsed : State()
+
+        operator fun not(): State =
+            when (this) {
+                Expanded -> Collapsed
+                Collapsed -> Expanded
+            }
+    }
+
     companion object {
         private const val VIEW_PADDING: Int = 2
         private const val ANIMATION_DURATION: Long = 50
     }
-}
-
-interface NothingSelectedCallback {
-    fun onNothingSelected()
 }

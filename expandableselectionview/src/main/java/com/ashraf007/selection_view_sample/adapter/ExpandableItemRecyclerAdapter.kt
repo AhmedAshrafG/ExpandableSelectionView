@@ -1,17 +1,17 @@
-package com.ashraf007.expandableselectionview
+package com.ashraf007.selection_view_sample.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.areeb.doobocore.R
+import com.ashraf007.expandableselectionview.R
 
 class ExpandableItemRecyclerAdapter(
     internal var adapter: ExpandableItemAdapter,
     private val showDividers: Boolean,
     private val itemClickCallback: (Int) -> Unit,
-    private val isSelected: (Int) -> Boolean
+    private val selectedIndexPredicate: (Int) -> Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -34,7 +34,7 @@ class ExpandableItemRecyclerAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemView = (holder.itemView as ViewGroup).getChildAt(1)
         adapter.bindItemView(itemView, position)
-        adapter.onItemSelectedStateChanged(itemView, isSelected(position))
+        adapter.onItemSelectedStateChanged(itemView, selectedIndexPredicate(position))
         holder.itemView.setOnClickListener { itemClickCallback.invoke(position) }
     }
 
