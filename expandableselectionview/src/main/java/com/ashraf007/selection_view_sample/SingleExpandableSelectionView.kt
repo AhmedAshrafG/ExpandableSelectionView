@@ -1,7 +1,8 @@
-package com.ashraf007.selection_view_sample.view
+package com.ashraf007.selection_view_sample
 
 import android.content.Context
 import android.util.AttributeSet
+import com.ashraf007.selection_view_sample.view.ExpandableSelectionView
 
 public class SingleExpandableSelectionView @JvmOverloads constructor(
     context: Context,
@@ -26,8 +27,8 @@ public class SingleExpandableSelectionView @JvmOverloads constructor(
     }
 
     override fun selectIndex(index: Int) {
-        val selectedItems = getSelectedIndices()
         if (!isSelected(index)) {
+            val selectedItems = getSelectedIndices()
             if (selectedItems.isNotEmpty())
                 unSelectItem(selectedItems.first())
             selectItem(index)

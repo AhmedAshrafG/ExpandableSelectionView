@@ -10,11 +10,12 @@
 	tools:context=".MainActivity"
 	>
 
-	<com.ashraf007.selection_view_sample.view.SingleExpandableSelectionView
+	<com.ashraf007.selection_view_sample.SingleExpandableSelectionView
 		android:id="@+id/expandableSelectionView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:dividerVisibility="true"
+		app:maximumHeight="200dp"
 		/>
 
 	<TextView

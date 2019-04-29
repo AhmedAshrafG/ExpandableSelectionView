@@ -10,6 +10,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        expandableSelectionView.expandableSelectionAdapter = StringAdapter(listOf("LOL1", "LOL2"))
+        expandableSelectionView.expandableSelectionAdapter = StringAdapter(listOf(
+            "LOL1",
+            "LOL2",
+            "LOL2",
+            "LOL2",
+            "LOL2",
+            "LOL2",
+            "LOL2",
+            "LOL2",
+            "LOL2"
+        ))
     }
 }

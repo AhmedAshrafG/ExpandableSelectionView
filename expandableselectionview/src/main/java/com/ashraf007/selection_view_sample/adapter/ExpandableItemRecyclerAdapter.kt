@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.ashraf007.expandableselectionview.R
 
@@ -19,9 +20,7 @@ class ExpandableItemRecyclerAdapter(
         val contentView = adapter.getItemView(inflater, parent)
         val linearLayout = LinearLayout(parent.context)
         val dividerView = inflater.inflate(R.layout.divider, parent, false)
-
-        if (!showDividers)
-            dividerView.visibility = View.INVISIBLE
+        dividerView.isVisible = showDividers
 
         linearLayout.orientation = LinearLayout.VERTICAL
         linearLayout.addView(dividerView)

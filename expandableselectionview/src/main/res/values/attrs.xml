@@ -8,5 +8,6 @@
 		<attr name="selectionDrawable" format="reference" />
 		<attr name="dividerColor" format="color" />
 		<attr name="dividerVisibility" format="boolean" />
+		<attr name="animationDurationScale" format="integer" />
 	</declare-styleable>
 </resources>

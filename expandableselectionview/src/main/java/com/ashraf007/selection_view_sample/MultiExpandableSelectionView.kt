@@ -1,7 +1,8 @@
-package com.ashraf007.selection_view_sample.view
+package com.ashraf007.selection_view_sample
 
 import android.content.Context
 import android.util.AttributeSet
+import com.ashraf007.selection_view_sample.view.ExpandableSelectionView
 
 public class MultiExpandableSelectionView @JvmOverloads constructor(
     context: Context,
