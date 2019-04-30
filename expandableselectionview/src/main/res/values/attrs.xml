@@ -5,6 +5,6 @@
 		<attr name="background" format="reference" />
 		<attr name="dividerColor" format="color" />
 		<attr name="dividerVisibility" format="boolean" />
-		<attr name="animationDurationScale" format="integer" />
+		<attr name="animationDuration" format="integer" />
 	</declare-styleable>
 </resources>

@@ -18,7 +18,7 @@ fun ViewGroup.attachLayout(@LayoutRes resId: Int) =
 
 fun View.expand(
     maxExpandedHeight: Int,
-    animationDurationScale: Int,
+    animationDuration: Long,
     completionListener: (() -> Unit)? = null
 ) {
     measure(MATCH_PARENT, WRAP_CONTENT)
@@ -41,13 +41,12 @@ fun View.expand(
 
         override fun willChangeBounds() = true
     }
-    // 1dp/ms
-    a.duration = ((targetHeight / context.screenDensity) * animationDurationScale).toLong()
+    a.duration = animationDuration
     startAnimation(a)
 }
 
 fun View.collapse(
-    animationDurationScale: Int,
+    animationDuration: Long,
     completionListener: (() -> Unit)? = null
 ) {
     val initialHeight = measuredHeight
@@ -65,7 +64,6 @@ fun View.collapse(
 
         override fun willChangeBounds() = true
     }
-    // 1dp/ms
-    a.duration = ((initialHeight / context.screenDensity) * animationDurationScale).toLong()
+    a.duration = animationDuration
     startAnimation(a)
 }

@@ -29,7 +29,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     private var showDividers: Boolean = true
     private var dividerColor: Int = Color.parseColor("#668b999f")
     private var maxHeight: Int = Int.MAX_VALUE
-    private var animationDurationScale: Int = DEFAULT_ANIMATION_DURATION_SCALE
+    private var animationDuration: Long = DEFAULT_ANIMATION_DURATION_SCALE
     private var selectedIndices: MutableList<Int> = mutableListOf()
 
     private var expandableSelectionAdapter: ExpandableItemAdapter? = null
@@ -102,10 +102,10 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
                 R.styleable.ExpandableSelectionView_dividerColor,
                 dividerColor
             )
-            animationDurationScale = getInteger(
-                R.styleable.ExpandableSelectionView_animationDurationScale,
-                animationDurationScale
-            )
+            animationDuration = getInteger(
+                R.styleable.ExpandableSelectionView_animationDuration,
+                animationDuration.toInt()
+            ).toLong()
 
             itemsRecyclerView.maxHeight = maxHeight
             bgDrawable?.let { contentLayout.background = it }
@@ -152,11 +152,11 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     }
 
     private fun expand() {
-        itemsRecyclerView.expand(animationDurationScale)
+        itemsRecyclerView.expand(animationDuration)
     }
 
     private fun collapse() {
-        itemsRecyclerView.collapse(animationDurationScale)
+        itemsRecyclerView.collapse(animationDuration)
     }
 
     abstract fun selectIndex(index: Int)
@@ -189,6 +189,6 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_ANIMATION_DURATION_SCALE: Int = 1
+        private const val DEFAULT_ANIMATION_DURATION_SCALE: Long = 300L
     }
 }

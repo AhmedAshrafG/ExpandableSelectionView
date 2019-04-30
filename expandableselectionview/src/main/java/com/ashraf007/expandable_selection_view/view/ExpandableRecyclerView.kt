@@ -23,16 +23,16 @@ class ExpandableRecyclerView @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, newHeightSpec)
     }
 
-    fun expand(animationDurationScale: Int) {
+    fun expand(animationDuration: Long) {
         this.animating = true
-        this.expand(maxHeight, animationDurationScale) {
+        this.expand(maxHeight, animationDuration) {
             this.animating = false
         }
     }
 
-    fun collapse(animationDurationScale: Int) {
+    fun collapse(animationDuration: Long) {
         this.animating = true
-        this.collapse(animationDurationScale) {
+        this.collapse(animationDuration) {
             this.animating = false
         }
     }
