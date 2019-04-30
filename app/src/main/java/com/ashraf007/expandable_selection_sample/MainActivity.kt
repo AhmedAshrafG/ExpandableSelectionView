@@ -10,7 +10,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val items = listOf(
+        initSingleSelectionView()
+        initMultiSelectionView()
+    }
+
+    private fun initSingleSelectionView() {
+        val genders = listOf(
+            "Male",
+            "Female",
+            "Prefer not to specify"
+        )
+        val adapter = BasicStringAdapter(genders, "Select Gender..")
+        singleSelectionView.setAdapter(adapter)
+    }
+
+    private fun initMultiSelectionView() {
+        val languages = listOf(
             "English",
             "Spanish",
             "Chinese",
@@ -20,10 +35,7 @@ class MainActivity : AppCompatActivity() {
             "Other Lang",
             "Other Lang"
         )
-        val adapter = BasicStringAdapter(items, "Language Spoken")
-        expandableSelectionView.setAdapter(adapter)
-//        Handler().postDelayed({
-//            expandableSelectionView.setAdapter(adapter)
-//        }, 2000)
+        val adapter = BasicStringAdapter(languages, "Language Spoken")
+        multiSelectionView.setAdapter(adapter)
     }
 }

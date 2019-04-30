@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.core.widget.NestedScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:padding="16dp"
-	tools:context=".MainActivity"
 	>
 
-	<com.ashraf007.expandable_selection_view.ExpandableSingleSelectionView
-		android:id="@+id/expandableSelectionView"
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:dividerVisibility="true"
-		app:maximumHeight="200dp"
-		android:background="@drawable/bg_expandable_selection_view"
-		android:layout_marginBottom="16dp"
-		/>
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="16dp"
+		tools:context=".MainActivity"
+		>
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="I'm gonna be pushed down"
-		tools:ignore="HardcodedText"
-		/>
+		<com.ashraf007.expandable_selection_view.ExpandableSingleSelectionView
+			android:id="@+id/singleSelectionView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/bg_expandable_selection_view"
+			app:dividerVisibility="true"
+			app:animationDuration="1000"
+			/>
 
-</LinearLayout>
+		<com.ashraf007.expandable_selection_view.ExpandableMultiSelectionView
+			android:id="@+id/multiSelectionView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/bg_expandable_selection_view"
+			app:dividerVisibility="true"
+			app:maximumHeight="200dp"
+			/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="I'm gonna be pushed down"
+			tools:ignore="HardcodedText"
+			/>
+
+	</LinearLayout>
+</androidx.core.widget.NestedScrollView>
