@@ -12,7 +12,7 @@ import com.ashraf007.expandable_selection_view.view.ExpandableSelectionView
 
 open class BasicStringAdapter(
     private val items: List<String>,
-    private val hint: String? = null
+    var hint: String? = null
 ) : ExpandableItemAdapter {
 
     @DrawableRes
@@ -22,24 +22,27 @@ open class BasicStringAdapter(
     @DrawableRes
     var expandedStateResId: Int? = null
 
-    override fun inflateHeaderView(parent: ViewGroup) =
-        parent.inflate(R.layout.expandable_string_header_layout)
+    override fun inflateHeaderView(parent: ViewGroup): View {
+        val view = parent.inflate(R.layout.basic_expandable_header_layout)
+        val headerTV = view.findViewById<TextView>(R.id.headerTV)
+        headerTV.hint = hint
+        return view
+    }
 
     override fun inflateItemView(parent: ViewGroup) =
-        parent.inflate(R.layout.expandable_string_item_layout)
+        parent.inflate(R.layout.basic_expandable_item_layout)
 
     override fun bindItemView(itemView: View, position: Int, selected: Boolean) {
-        val itemTV = itemView.findViewById<TextView>(R.id.text_field)
+        val itemTV = itemView.findViewById<TextView>(R.id.itemNameTV)
         itemTV.text = items[position]
-        itemView.findViewById<ImageView>(R.id.selected_mark)
+        itemView.findViewById<ImageView>(R.id.selectionIV)
             .setImageResource(selectedStateResId ?: R.drawable.ic_selected)
-        itemView.findViewById<View>(R.id.selected_mark).isVisible = selected
+        itemView.findViewById<View>(R.id.selectionIV).isVisible = selected
     }
 
     override fun bindHeaderView(headerView: View, selectedIndices: List<Int>) {
-        val headerTV = headerView.findViewById<TextView>(R.id.header_tv)
+        val headerTV = headerView.findViewById<TextView>(R.id.headerTV)
         if (selectedIndices.isEmpty()) {
-            headerTV.hint = hint
             headerTV.text = null
         } else {
             headerTV.text = selectedIndices.joinToString { items[it] }
@@ -49,7 +52,7 @@ open class BasicStringAdapter(
     override fun getItemsCount() = items.size
 
     override fun onViewStateChanged(headerView: View, state: ExpandableSelectionView.State) {
-        val imageView = headerView.findViewById<ImageView>(R.id.list_indicator)
+        val imageView = headerView.findViewById<ImageView>(R.id.listIndicatorIV)
         imageView.setImageResource(
             when (state) {
                 ExpandableSelectionView.State.Expanded ->

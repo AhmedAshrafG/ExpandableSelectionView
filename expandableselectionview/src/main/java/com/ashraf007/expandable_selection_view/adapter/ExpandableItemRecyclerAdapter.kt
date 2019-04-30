@@ -6,7 +6,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.ashraf007.expandable_selection_view.R
@@ -41,13 +40,11 @@ class ExpandableItemRecyclerAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemViewGroup = holder.itemView as ViewGroup
         val itemView = itemViewGroup.getChildAt(1)
-        val dividerView = itemViewGroup.getChildAt(0)
         val isItemSelected = selectedIndexPredicate(position)
 
         adapter.bindItemView(itemView, position, isItemSelected)
 
         holder.itemView.setOnClickListener { itemClickCallback.invoke(position) }
-        dividerView.isGone = (position == 0)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

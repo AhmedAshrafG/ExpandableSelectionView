@@ -12,20 +12,24 @@
 	>
 
 	<TextView
-		android:id="@+id/header_tv"
+		android:id="@+id/itemNameTV"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
-		android:textColorHint="@android:color/darker_gray"
+		android:gravity="center_vertical"
+		android:textColor="#ff5c6979"
 		android:textSize="12sp"
 		tools:text="@string/app_name"
 		/>
 
 	<ImageView
-		android:id="@+id/list_indicator"
+		android:id="@+id/selectionIV"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
-		tools:background="@android:drawable/arrow_down_float"
+		android:visibility="invisible"
+		tools:src="@drawable/ic_selected"
+		tools:visibility="visible"
 		/>
+
 </LinearLayout>

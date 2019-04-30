@@ -11,21 +11,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val items = listOf(
-            "LOL1",
-            "LOL2",
-            "LOL2",
-            "LOL2",
-            "LOL2",
-            "LOL2",
-            "LOL2",
-            "LOL2",
-            "LOL2"
+            "English",
+            "Spanish",
+            "Chinese",
+            "Other Lang",
+            "Other Lang",
+            "Other Lang",
+            "Other Lang",
+            "Other Lang"
         )
-        val adapter = BasicStringAdapter(items, "Hint")
-        expandableSelectionView.selectIndex(0)
+        val adapter = BasicStringAdapter(items, "Language Spoken")
         expandableSelectionView.setAdapter(adapter)
 //        Handler().postDelayed({
-//            expandableSelectionView.setAdapter(BasicStringAdapter(items.subList(0, 3), "LOL"))
+//            expandableSelectionView.setAdapter(adapter)
 //        }, 2000)
     }
 }

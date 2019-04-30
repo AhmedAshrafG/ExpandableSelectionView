@@ -14,7 +14,6 @@
 		android:id="@+id/expandableSelectionView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:padding="4dp"
 		app:dividerVisibility="true"
 		app:maximumHeight="200dp"
 		android:background="@drawable/bg_expandable_selection_view"

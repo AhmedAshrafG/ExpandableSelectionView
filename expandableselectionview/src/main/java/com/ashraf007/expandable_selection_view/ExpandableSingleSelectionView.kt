@@ -10,7 +10,7 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
-    private var selectionListener: ((Int?) -> Unit)? = null
+    var selectionListener: ((Int?) -> Unit)? = null
 
     override fun handleItemClick(index: Int) {
         val selectedItems = getSelectedIndices()

@@ -1,6 +1,7 @@
 package com.ashraf007.expandable_selection_view.view
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ashraf007.expandable_selection_view.R
 import com.ashraf007.expandable_selection_view.adapter.ExpandableItemAdapter
 import com.ashraf007.expandable_selection_view.adapter.ExpandableItemRecyclerAdapter
-import com.ashraf007.expandable_selection_view.extension.getColorCompat
 import com.ashraf007.expandable_selection_view.extension.inflate
 
 abstract class ExpandableSelectionView @JvmOverloads constructor(
@@ -27,7 +27,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
 
     private var currentState: State = State.Collapsed
     private var showDividers: Boolean = true
-    private var dividerColor: Int = context.getColorCompat(android.R.color.darker_gray)
+    private var dividerColor: Int = Color.parseColor("#668b999f")
     private var maxHeight: Int = Int.MAX_VALUE
     private var animationDurationScale: Int = DEFAULT_ANIMATION_DURATION_SCALE
     private var selectedIndices: MutableList<Int> = mutableListOf()
