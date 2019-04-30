@@ -1,12 +1,12 @@
-package com.ashraf007.selection_view_sample.view
+package com.ashraf007.expandable_selection_view.view
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.RecyclerView
-import com.ashraf007.selection_view_sample.extension.collapse
-import com.ashraf007.selection_view_sample.extension.expand
+import com.ashraf007.expandable_selection_view.extension.collapse
+import com.ashraf007.expandable_selection_view.extension.expand
 
-class MaxHeightRecyclerView @JvmOverloads constructor(
+class ExpandableRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

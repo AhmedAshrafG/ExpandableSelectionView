@@ -1,16 +1,16 @@
-package com.ashraf007.selection_view_sample
+package com.ashraf007.expandable_selection_view
 
 import android.content.Context
 import android.util.AttributeSet
-import com.ashraf007.selection_view_sample.view.ExpandableSelectionView
+import com.ashraf007.expandable_selection_view.view.ExpandableSelectionView
 
-public class MultiExpandableSelectionView @JvmOverloads constructor(
+class ExpandableMultiSelectionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
-    public var selectionListener: ((List<Int>) -> Unit)? = null
+    var selectionListener: ((List<Int>) -> Unit)? = null
 
     override fun handleItemClick(index: Int) {
         if (isSelected(index)) {
@@ -19,11 +19,7 @@ public class MultiExpandableSelectionView @JvmOverloads constructor(
             selectItem(index)
         }
         val selectedIndices = getSelectedIndices()
-        if (selectedIndices.isEmpty()) {
-            nothingSelectedListener?.invoke()
-        } else {
-            selectionListener?.invoke(selectedIndices)
-        }
+        selectionListener?.invoke(selectedIndices)
     }
 
     override fun selectIndex(index: Int) {
@@ -31,9 +27,5 @@ public class MultiExpandableSelectionView @JvmOverloads constructor(
             selectItem(index)
             selectionListener?.invoke(getSelectedIndices())
         }
-    }
-
-    interface MultiSelectionCallback {
-        fun onItemsSelected(index: List<Int>)
     }
 }

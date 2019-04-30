@@ -1,13 +1,20 @@
-package com.ashraf007.selection_view_sample.extension
+package com.ashraf007.expandable_selection_view.extension
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.animation.Animation
 import android.view.animation.Transformation
+import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
 
+fun ViewGroup.inflate(@LayoutRes resId: Int, attachToRoot: Boolean = false): View =
+    LayoutInflater.from(context).inflate(resId, this, attachToRoot)
 
+fun ViewGroup.attachLayout(@LayoutRes resId: Int) =
+    inflate(resId, true)
 
 fun View.expand(
     maxExpandedHeight: Int,
