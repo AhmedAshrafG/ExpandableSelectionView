@@ -20,14 +20,41 @@ class ExpandableMultiSelectionView @JvmOverloads constructor(
         } else {
             selectItem(index)
         }
-        val selectedIndices = getSelectedIndices()
-        selectionListener?.invoke(selectedIndices)
+        notifySelectionListener()
     }
 
-    override fun selectIndex(index: Int) {
+    override fun clearSelection() {
+        super.clearSelection()
+        selectionListener?.invoke(emptyList())
+    }
+
+    fun selectIndex(index: Int) {
         if (!isSelected(index)) {
             selectItem(index)
-            selectionListener?.invoke(getSelectedIndices())
+            notifySelectionListener()
         }
+    }
+
+    fun unSelectIndex(index: Int) {
+        if (isSelected(index)) {
+            unSelectItem(index)
+            notifySelectionListener()
+        }
+    }
+
+    fun selectIndices(indices: List<Int>) {
+        indices.filterNot(::isSelected)
+            .forEach(::selectItem)
+        notifySelectionListener()
+    }
+
+    fun unSelectIndices(indices: List<Int>) {
+        indices.filter(::isSelected)
+            .forEach(::unSelectItem)
+        notifySelectionListener()
+    }
+
+    private fun notifySelectionListener() {
+        selectionListener?.invoke(selectedIndices)
     }
 }

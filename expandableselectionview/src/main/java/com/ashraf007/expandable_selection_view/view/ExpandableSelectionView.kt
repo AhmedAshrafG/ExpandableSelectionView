@@ -92,8 +92,9 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
 
     internal fun getSelectedIndices(): List<Int> = selectedIndices
 
-    fun clearSelection() {
+    open fun clearSelection() {
         selectedIndices.clear()
+        expandableSelectionAdapter?.bindHeaderView(headerView, selectedIndices)
         recyclerAdapter?.notifyDataSetChanged()
     }
 
@@ -172,8 +173,6 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     private fun collapse() {
         itemsRecyclerView.collapse(animationDuration)
     }
-
-    abstract fun selectIndex(index: Int)
 
     abstract fun handleItemClick(index: Int)
 

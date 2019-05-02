@@ -28,7 +28,7 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
         setState(State.Collapsed)
     }
 
-    override fun selectIndex(index: Int) {
+    fun selectIndex(index: Int) {
         if (!isSelected(index)) {
             val selectedItems = getSelectedIndices()
             if (selectedItems.isNotEmpty())
@@ -36,5 +36,10 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
             selectItem(index)
             selectionListener?.invoke(index)
         }
+    }
+
+    override fun clearSelection() {
+        super.clearSelection()
+        selectionListener?.invoke(null)
     }
 }
