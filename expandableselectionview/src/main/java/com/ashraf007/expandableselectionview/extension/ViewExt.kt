@@ -1,4 +1,4 @@
-package com.ashraf007.expandable_selection_view.extension
+package com.ashraf007.expandableselectionview.extension
 
 import android.view.LayoutInflater
 import android.view.View

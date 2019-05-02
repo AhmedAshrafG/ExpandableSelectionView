@@ -1,8 +1,8 @@
-package com.ashraf007.expandable_selection_view.adapter
+package com.ashraf007.expandableselectionview.adapter
 
 import android.view.View
 import android.view.ViewGroup
-import com.ashraf007.expandable_selection_view.view.ExpandableSelectionView
+import com.ashraf007.expandableselectionview.view.ExpandableSelectionView
 
 interface ExpandableItemAdapter {
     fun inflateHeaderView(parent: ViewGroup): View

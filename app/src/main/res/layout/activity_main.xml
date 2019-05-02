@@ -15,7 +15,7 @@
 		tools:context=".MainActivity"
 		>
 
-		<com.ashraf007.expandable_selection_view.ExpandableSingleSelectionView
+		<com.ashraf007.expandableselectionview.ExpandableSingleSelectionView
 			android:id="@+id/singleSelectionView"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
 			tools:ignore="HardcodedText"
 			/>
 
-		<com.ashraf007.expandable_selection_view.ExpandableMultiSelectionView
+		<com.ashraf007.expandableselectionview.ExpandableMultiSelectionView
 			android:id="@+id/multiSelectionView"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

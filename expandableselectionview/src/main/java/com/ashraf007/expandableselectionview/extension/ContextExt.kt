@@ -1,4 +1,4 @@
-package com.ashraf007.expandable_selection_view.extension
+package com.ashraf007.expandableselectionview.extension
 
 import android.content.Context
 import androidx.annotation.ColorRes

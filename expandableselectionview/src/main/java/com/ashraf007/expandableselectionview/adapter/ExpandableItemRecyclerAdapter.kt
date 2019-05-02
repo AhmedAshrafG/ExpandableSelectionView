@@ -1,4 +1,4 @@
-package com.ashraf007.expandable_selection_view.adapter
+package com.ashraf007.expandableselectionview.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +8,8 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.ashraf007.expandable_selection_view.R
-import com.ashraf007.expandable_selection_view.extension.inflate
+import com.ashraf007.expandableselectionview.R
+import com.ashraf007.expandableselectionview.extension.inflate
 
 class ExpandableItemRecyclerAdapter(
     private var adapter: ExpandableItemAdapter,

@@ -1,9 +1,9 @@
-package com.ashraf007.expandable_selection_sample
+package com.ashraf007.expandableselectionsample
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.ashraf007.expandable_selection_view.adapter.BasicStringAdapter
+import com.ashraf007.expandableselectionview.adapter.BasicStringAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

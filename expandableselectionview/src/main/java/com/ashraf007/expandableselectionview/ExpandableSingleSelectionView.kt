@@ -1,8 +1,8 @@
-package com.ashraf007.expandable_selection_view
+package com.ashraf007.expandableselectionview
 
 import android.content.Context
 import android.util.AttributeSet
-import com.ashraf007.expandable_selection_view.view.ExpandableSelectionView
+import com.ashraf007.expandableselectionview.view.ExpandableSelectionView
 
 class ExpandableSingleSelectionView @JvmOverloads constructor(
     context: Context,

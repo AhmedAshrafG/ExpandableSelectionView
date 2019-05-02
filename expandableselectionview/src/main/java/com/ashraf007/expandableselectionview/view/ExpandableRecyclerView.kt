@@ -1,10 +1,10 @@
-package com.ashraf007.expandable_selection_view.view
+package com.ashraf007.expandableselectionview.view
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.RecyclerView
-import com.ashraf007.expandable_selection_view.extension.collapse
-import com.ashraf007.expandable_selection_view.extension.expand
+import com.ashraf007.expandableselectionview.extension.collapse
+import com.ashraf007.expandableselectionview.extension.expand
 
 class ExpandableRecyclerView @JvmOverloads constructor(
     context: Context,

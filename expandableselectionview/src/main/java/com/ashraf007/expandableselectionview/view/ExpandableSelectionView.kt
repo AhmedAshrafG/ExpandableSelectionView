@@ -1,4 +1,4 @@
-package com.ashraf007.expandable_selection_view.view
+package com.ashraf007.expandableselectionview.view
 
 import android.content.Context
 import android.graphics.Color
@@ -12,10 +12,10 @@ import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ashraf007.expandable_selection_view.R
-import com.ashraf007.expandable_selection_view.adapter.ExpandableItemAdapter
-import com.ashraf007.expandable_selection_view.adapter.ExpandableItemRecyclerAdapter
-import com.ashraf007.expandable_selection_view.extension.inflate
+import com.ashraf007.expandableselectionview.R
+import com.ashraf007.expandableselectionview.adapter.ExpandableItemAdapter
+import com.ashraf007.expandableselectionview.adapter.ExpandableItemRecyclerAdapter
+import com.ashraf007.expandableselectionview.extension.inflate
 
 abstract class ExpandableSelectionView @JvmOverloads constructor(
     context: Context,

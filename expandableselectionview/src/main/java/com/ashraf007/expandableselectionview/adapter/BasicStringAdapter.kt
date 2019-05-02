@@ -1,4 +1,4 @@
-package com.ashraf007.expandable_selection_view.adapter
+package com.ashraf007.expandableselectionview.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
-import com.ashraf007.expandable_selection_view.R
-import com.ashraf007.expandable_selection_view.extension.inflate
-import com.ashraf007.expandable_selection_view.view.ExpandableSelectionView
+import com.ashraf007.expandableselectionview.R
+import com.ashraf007.expandableselectionview.extension.inflate
+import com.ashraf007.expandableselectionview.view.ExpandableSelectionView
 
 open class BasicStringAdapter(
     private val items: List<String>,
