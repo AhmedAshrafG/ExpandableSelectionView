@@ -2,10 +2,13 @@ package com.ashraf007.expandable_selection_view.view
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +29,8 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     private var headerView: View
 
     private var currentState: State = State.Collapsed
+    private var bgDrawable: Drawable? = getDrawable(context, R.drawable.bg_expandable_selection_view)
+    private var showScrollBars: Boolean = true
     private var showDividers: Boolean = true
     private var dividerColor: Int = Color.parseColor("#668b999f")
     private var maxHeight: Int = Int.MAX_VALUE
@@ -36,19 +41,27 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     private var recyclerAdapter: ExpandableItemRecyclerAdapter? = null
 
     init {
+        attrs?.let { extractAttributes(it) }
+
         this.orientation = VERTICAL
 
         contentLayout = LinearLayout(context)
         contentLayout.orientation = VERTICAL
+        contentLayout.background = bgDrawable
 
-        itemsRecyclerView = inflate(R.layout.expandable_recycler_view_layout) as ExpandableRecyclerView
+        val recyclerStyle = when {
+            showScrollBars -> R.style.ExpandableRecyclerView_Scrollbars
+            else -> R.style.ExpandableRecyclerView
+        }
+        itemsRecyclerView =
+            ExpandableRecyclerView(ContextThemeWrapper(context, recyclerStyle))
+        itemsRecyclerView.maxHeight = maxHeight
+
         errorLabel = inflate(R.layout.error_field_layout) as TextView
         headerView = View(context)
 
         this.addView(contentLayout)
         this.addView(errorLabel)
-
-        attrs?.let { drawWithAttrs(it) }
     }
 
     fun setAdapter(adapter: ExpandableItemAdapter) {
@@ -77,19 +90,19 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
         toggleAndSetState()
     }
 
-    fun getSelectedIndices(): List<Int> = selectedIndices
+    internal fun getSelectedIndices(): List<Int> = selectedIndices
 
     fun clearSelection() {
         selectedIndices.clear()
         recyclerAdapter?.notifyDataSetChanged()
     }
 
-    private fun drawWithAttrs(attrs: AttributeSet) {
+    private fun extractAttributes(attrs: AttributeSet) {
         context.withStyledAttributes(
             attrs,
             R.styleable.ExpandableSelectionView, 0, 0
         ) {
-            val bgDrawable = getDrawable(R.styleable.ExpandableSelectionView_background)
+            bgDrawable = getDrawable(R.styleable.ExpandableSelectionView_background) ?: bgDrawable
             maxHeight = getLayoutDimension(
                 R.styleable.ExpandableSelectionView_maximumHeight,
                 maxHeight
@@ -97,6 +110,10 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
             showDividers = getBoolean(
                 R.styleable.ExpandableSelectionView_dividerVisibility,
                 showDividers
+            )
+            showScrollBars = getBoolean(
+                R.styleable.ExpandableSelectionView_scrollBarsVisibility,
+                showScrollBars
             )
             dividerColor = getColor(
                 R.styleable.ExpandableSelectionView_dividerColor,
@@ -106,9 +123,6 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
                 R.styleable.ExpandableSelectionView_animationDuration,
                 animationDuration.toInt()
             ).toLong()
-
-            itemsRecyclerView.maxHeight = maxHeight
-            bgDrawable?.let { contentLayout.background = it }
         }
     }
 
