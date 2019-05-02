@@ -1,6 +1,7 @@
 package com.ashraf007.expandable_selection_sample
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ashraf007.expandable_selection_view.adapter.BasicStringAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         )
         val adapter = BasicStringAdapter(genders, "Select Gender..")
         singleSelectionView.setAdapter(adapter)
+        singleSelectionView.selectionListener = {
+            Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initMultiSelectionView() {
@@ -37,5 +41,8 @@ class MainActivity : AppCompatActivity() {
         )
         val adapter = BasicStringAdapter(languages, "Language Spoken")
         multiSelectionView.setAdapter(adapter)
+        multiSelectionView.selectionListener = {
+            Toast.makeText(this, "SelectedIndices are $it", Toast.LENGTH_SHORT).show()
+        }
     }
 }

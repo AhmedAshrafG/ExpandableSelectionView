@@ -11,6 +11,8 @@ class ExpandableMultiSelectionView @JvmOverloads constructor(
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
     var selectionListener: ((List<Int>) -> Unit)? = null
+    val selectedIndices: List<Int>
+        get() = getSelectedIndices()
 
     override fun handleItemClick(index: Int) {
         if (isSelected(index)) {

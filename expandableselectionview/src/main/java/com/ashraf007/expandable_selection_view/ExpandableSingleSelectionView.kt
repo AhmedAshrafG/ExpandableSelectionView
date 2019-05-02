@@ -11,6 +11,8 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
     var selectionListener: ((Int?) -> Unit)? = null
+    val selectedIndex: Int?
+        get() = getSelectedIndices().firstOrNull()
 
     override fun handleItemClick(index: Int) {
         val selectedItems = getSelectedIndices()
@@ -35,6 +37,4 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
             selectionListener?.invoke(index)
         }
     }
-
-    fun getSelectedIndex() = getSelectedIndices().firstOrNull()
 }
