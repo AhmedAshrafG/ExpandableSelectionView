@@ -2,42 +2,48 @@ package com.ashraf007.expandableselectionview
 
 import android.content.Context
 import android.util.AttributeSet
+import com.ashraf007.expandableselectionview.view.ExpandableSelectionView
 
-public class SingleExpandableSelectionView @JvmOverloads constructor(
+class ExpandableSingleSelectionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
-    public var selectionListener: ((Int) -> Unit)? = null
+    var selectionListener: ((Int?) -> Unit)? = null
+    val selectedIndex: Int?
+        get() = getSelectedIndices().firstOrNull()
 
     override fun handleItemClick(index: Int) {
         val selectedItems = getSelectedIndices()
         if (isSelected(index)) {
             unSelectItem(index)
-            nothingSelectedListener?.invoke()
+            notifySelectionListener(null)
         } else {
             if (selectedItems.isNotEmpty())
                 unSelectItem(selectedItems.first())
             selectItem(index)
-            selectionListener?.invoke(index)
+            notifySelectionListener(index)
         }
         setState(State.Collapsed)
     }
 
-    override fun selectIndex(index: Int) {
-        val selectedItems = getSelectedIndices()
+    fun selectIndex(index: Int) {
         if (!isSelected(index)) {
+            val selectedItems = getSelectedIndices()
             if (selectedItems.isNotEmpty())
                 unSelectItem(selectedItems.first())
             selectItem(index)
-            selectionListener?.invoke(index)
+            notifySelectionListener(index)
         }
     }
 
-    public fun getSelectedIndex() = getSelectedIndices().firstOrNull()
-}
+    override fun clearSelection() {
+        super.clearSelection()
+        notifySelectionListener(null)
+    }
 
-interface SingleSelectionCallback {
-    fun onItemSelected(index: Int)
+    private fun notifySelectionListener(index: Int?) {
+        selectionListener?.invoke(index)
+    }
 }
