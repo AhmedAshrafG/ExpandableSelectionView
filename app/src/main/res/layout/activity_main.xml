@@ -42,5 +42,13 @@
 			app:maximumHeight="200dp"
 			/>
 
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="Same goes to me"
+			tools:ignore="HardcodedText"
+			/>
+
 	</LinearLayout>
 </androidx.core.widget.NestedScrollView>

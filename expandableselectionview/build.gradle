@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: 'klint.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.ashrafDoubleO7'
 
 android {
     compileSdkVersion 28
