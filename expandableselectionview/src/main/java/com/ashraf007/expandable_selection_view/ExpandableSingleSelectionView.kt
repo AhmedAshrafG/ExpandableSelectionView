@@ -18,12 +18,12 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
         val selectedItems = getSelectedIndices()
         if (isSelected(index)) {
             unSelectItem(index)
-            selectionListener?.invoke(null)
+            notifySelectionListener(null)
         } else {
             if (selectedItems.isNotEmpty())
                 unSelectItem(selectedItems.first())
             selectItem(index)
-            selectionListener?.invoke(index)
+            notifySelectionListener(index)
         }
         setState(State.Collapsed)
     }
@@ -34,12 +34,16 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
             if (selectedItems.isNotEmpty())
                 unSelectItem(selectedItems.first())
             selectItem(index)
-            selectionListener?.invoke(index)
+            notifySelectionListener(index)
         }
     }
 
     override fun clearSelection() {
         super.clearSelection()
-        selectionListener?.invoke(null)
+        notifySelectionListener(null)
+    }
+
+    private fun notifySelectionListener(index: Int?) {
+        selectionListener?.invoke(index)
     }
 }
