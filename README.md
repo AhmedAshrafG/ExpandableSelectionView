@@ -4,6 +4,7 @@
 
 Expandable selection view is a dropdown selection view that unlike Android Spinners, pushes views down providing a better user experience.
 
+<img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/single.gif" width="350" height="650"> <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/multi.gif" width="350" height="650">
 
 ---
 ## Why use it?
