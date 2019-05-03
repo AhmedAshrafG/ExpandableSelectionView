@@ -34,7 +34,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     private var showDividers: Boolean = true
     private var dividerColor: Int = Color.parseColor("#668b999f")
     private var maxHeight: Int = Int.MAX_VALUE
-    private var animationDuration: Long = DEFAULT_ANIMATION_DURATION_SCALE
+    private var animationDuration: Long = DEFAULT_ANIMATION_DURATION
     private var selectedIndices: MutableList<Int> = mutableListOf()
 
     private var expandableSelectionAdapter: ExpandableItemAdapter? = null
@@ -202,6 +202,6 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_ANIMATION_DURATION_SCALE: Long = 300L
+        private const val DEFAULT_ANIMATION_DURATION: Long = 300L
     }
 }
