@@ -4,10 +4,13 @@
 
 Expandable selection view is a dropdown selection view that unlike Android Spinners, pushes views down providing a better user experience.
 
-<img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/single.gif" width="250" height="500">
-<img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/multi.gif" width="250" height="500">
+<img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/single.gif" width="350" height="650"> <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/multi.gif" width="350" height="650">
 
 ---
+## Why use it?
+- For a better user and developer experience.
+- You might also be running away from Android spinners, cause you know 💩
+
 ## Installation
 
 #### Gradle
@@ -38,7 +41,7 @@ The library provides two views, the **ExpandableSingleSelectionView** and the **
 ```
 The component requires an `ExpandableItemAdapter` in order to work, for basic usage you can use an already defined `BasicStringAdapter` like this:
 
-For more detailed code example to use the library, please refer to the [`/sample`](https://github.com/ashrafDoubleO7/ExpandableSelectionView/tree/master/app) app.
+For a more detailed code example to use the library, please refer to the [`/sample`](https://github.com/ashrafDoubleO7/ExpandableSelectionView/tree/master/app) app.
 ```kotlin
 val genders = listOf(
     "Male",
