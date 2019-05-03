@@ -12,7 +12,7 @@ Expandable selection view is a dropdown selection view that unlike Android Spinn
 - You might also be running away from Android spinners, cause you know 💩
 
 ## Installation
-
+Note: This library is only compatible with AndroidX, I'll add compatibility support later on.
 #### Gradle
 In your project level gradle file
 ```gradle
@@ -163,9 +163,10 @@ class CustomExpandableItemAdapter : ExpandableItemAdapter {
 You can also check out the [`BasicStringAdapter`](https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/expandableselectionview/src/main/java/com/ashraf007/expandableselectionview/adapter/BasicStringAdapter.kt) as an example implementation. 
 ## TODO
 - [ ] Add a sample app for the advanced usage of the component.
-- [ ] Allow different types of expanding/collapsing animations.
 - [ ] Allow component height to be customized using the number of items as input.
+- [ ] Allow different types of expanding/collapsing animations.
 - [ ] Allow different interactions to dismiss the component.
+- [ ] Add compatibility support for pre-AndroidX usage.
 - [ ] Add CI/CD to fasten things up.
 
 ## Contributing
