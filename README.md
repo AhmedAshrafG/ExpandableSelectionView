@@ -7,6 +7,10 @@ Expandable selection view is a dropdown selection view that unlike Android Spinn
 <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/single.gif" width="350" height="650"> <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/multi.gif" width="350" height="650">
 
 ---
+
+### iOS version 
+- [ٍSwiftyMenu](https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu), By my good friend [Karim Ebrahim](https://github.com/KarimEbrahemAbdelaziz) 🔥
+
 ## Why use it?
 - For a better user and developer experience.
 - You might also be running away from Android spinners, cause you know 💩
@@ -41,7 +45,6 @@ The library provides two views, the **ExpandableSingleSelectionView** and the **
 ```
 The component requires an `ExpandableItemAdapter` in order to work, for basic usage you can use an already defined `BasicStringAdapter` like this:
 
-For a more detailed code example to use the library, please refer to the [`/sample`](https://github.com/ashrafDoubleO7/ExpandableSelectionView/tree/master/app) app.
 ```kotlin
 val genders = listOf(
     "Male",
@@ -97,6 +100,7 @@ singleSelectionView.setError("Please select your gender")
 // Or clear it
 singleSelectionView.setError(null)
 ```
+For a more detailed code example to use the library, please refer to the [`/sample`](https://github.com/ashrafDoubleO7/ExpandableSelectionView/tree/master/app) app.
 
 ## Design Customizations
 You can customize how the component should look and behave through xml using one or more of these attributes:
