@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2019-07-06
 **Added**
 - Select silently parameter in all select index/indices functions
+- Auto collapsing variable in ExpandableSingleSelectionView
 
 ## [1.0.0] - 2019-05-02
 **Added**

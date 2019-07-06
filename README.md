@@ -168,7 +168,7 @@ You can also check out the [`BasicStringAdapter`](https://github.com/ashrafDoubl
 ## TODO
 - [x] Add select silently parameter to the different select functions.
 - [ ] Scroll to first item after expanding.
-- [ ] Have more control over auto collapsing the component when a choice is selected.
+- [x] Have more control over auto collapsing the component when a choice is selected.
 - [ ] Add a sample app for the advanced usage of the component.
 - [ ] Allow component height to be customized using the number of items as input.
 - [ ] Allow different types of expanding/collapsing animations.

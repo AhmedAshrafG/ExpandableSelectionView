@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         singleSelectionView.selectionListener = {
             Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
         }
+        singleSelectionView.autoCollapseOnSelection = false
     }
 
     private fun initMultiSelectionView() {
