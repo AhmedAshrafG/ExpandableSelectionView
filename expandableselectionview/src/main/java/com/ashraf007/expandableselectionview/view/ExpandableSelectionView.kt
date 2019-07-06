@@ -167,6 +167,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     }
 
     private fun expand() {
+        itemsRecyclerView.scrollToPosition(0)
         itemsRecyclerView.expand(animationDuration)
     }
 

@@ -167,7 +167,7 @@ class CustomExpandableItemAdapter : ExpandableItemAdapter {
 You can also check out the [`BasicStringAdapter`](https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/expandableselectionview/src/main/java/com/ashraf007/expandableselectionview/adapter/BasicStringAdapter.kt) as an example implementation. 
 ## TODO
 - [x] Add select silently parameter to the different select functions.
-- [ ] Scroll to first item after expanding.
+- [x] Scroll to first item after expanding.
 - [x] Have more control over auto collapsing the component when a choice is selected.
 - [ ] Add a sample app for the advanced usage of the component.
 - [ ] Allow component height to be customized using the number of items as input.
