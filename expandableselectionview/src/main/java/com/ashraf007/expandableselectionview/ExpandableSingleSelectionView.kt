@@ -28,13 +28,16 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
         setState(State.Collapsed)
     }
 
-    fun selectIndex(index: Int) {
+    fun selectIndex(index: Int, notifyListener: Boolean = true) {
         if (!isSelected(index)) {
             val selectedItems = getSelectedIndices()
-            if (selectedItems.isNotEmpty())
+            if (selectedItems.isNotEmpty()) {
                 unSelectItem(selectedItems.first())
+            }
             selectItem(index)
-            notifySelectionListener(index)
+            if (notifyListener) {
+                notifySelectionListener(index)
+            }
         }
     }
 
