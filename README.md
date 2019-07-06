@@ -1,6 +1,6 @@
 ## Expandable Selection View
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MinSdk: 19](https://img.shields.io/badge/minSdk-19-green.svg)](https://developer.android.com/about/versions/android-4.0) [![write: Kotlin](https://img.shields.io/badge/write-Kotlin-orange.svg)](https://kotlinlang.org/) [![](https://jitpack.io/v/ashrafDoubleO7/ExpandableSelectionView.svg)](https://jitpack.io/#ashrafDoubleO7/ExpandableSelectionView)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MinSdk: 17](https://img.shields.io/badge/minSdk-17-green.svg)](https://developer.android.com/about/versions/android-4.0) [![write: Kotlin](https://img.shields.io/badge/write-Kotlin-orange.svg)](https://kotlinlang.org/) [![](https://jitpack.io/v/ashrafDoubleO7/ExpandableSelectionView.svg)](https://jitpack.io/#ashrafDoubleO7/ExpandableSelectionView)
 
 Expandable selection view is a dropdown selection view that unlike Android Spinners, pushes views down providing a better user experience.
 
