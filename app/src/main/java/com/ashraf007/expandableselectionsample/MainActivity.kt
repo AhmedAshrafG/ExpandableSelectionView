@@ -23,9 +23,11 @@ class MainActivity : AppCompatActivity() {
         )
         val adapter = BasicStringAdapter(genders, "Select Gender..")
         singleSelectionView.setAdapter(adapter)
+        singleSelectionView.selectIndex(0, false)
         singleSelectionView.selectionListener = {
             Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
         }
+        singleSelectionView.autoCollapseOnSelection = false
     }
 
     private fun initMultiSelectionView() {
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         )
         val adapter = BasicStringAdapter(languages, "Language Spoken")
         multiSelectionView.setAdapter(adapter)
+        multiSelectionView.selectIndices(listOf(2, 4), false)
         multiSelectionView.selectionListener = {
             Toast.makeText(this, "SelectedIndices are $it", Toast.LENGTH_SHORT).show()
         }

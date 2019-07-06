@@ -10,6 +10,8 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
+    var autoCollapseOnSelection: Boolean = true
+
     var selectionListener: ((Int?) -> Unit)? = null
     val selectedIndex: Int?
         get() = getSelectedIndices().firstOrNull()
@@ -25,16 +27,20 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
             selectItem(index)
             notifySelectionListener(index)
         }
-        setState(State.Collapsed)
+        if (autoCollapseOnSelection)
+            setState(State.Collapsed)
     }
 
-    fun selectIndex(index: Int) {
+    fun selectIndex(index: Int, notifyListener: Boolean = true) {
         if (!isSelected(index)) {
             val selectedItems = getSelectedIndices()
-            if (selectedItems.isNotEmpty())
+            if (selectedItems.isNotEmpty()) {
                 unSelectItem(selectedItems.first())
+            }
             selectItem(index)
-            notifySelectionListener(index)
+            if (notifyListener) {
+                notifySelectionListener(index)
+            }
         }
     }
 

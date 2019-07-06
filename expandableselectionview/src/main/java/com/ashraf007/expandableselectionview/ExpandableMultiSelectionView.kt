@@ -28,30 +28,38 @@ class ExpandableMultiSelectionView @JvmOverloads constructor(
         selectionListener?.invoke(emptyList())
     }
 
-    fun selectIndex(index: Int) {
+    fun selectIndex(index: Int, notifyListener: Boolean = true) {
         if (!isSelected(index)) {
             selectItem(index)
-            notifySelectionListener()
+            if (notifyListener) {
+                notifySelectionListener()
+            }
         }
     }
 
-    fun unSelectIndex(index: Int) {
+    fun unSelectIndex(index: Int, notifyListener: Boolean = true) {
         if (isSelected(index)) {
             unSelectItem(index)
+            if (notifyListener) {
+                notifySelectionListener()
+            }
+        }
+    }
+
+    fun selectIndices(indices: List<Int>, notifyListener: Boolean = true) {
+        indices.filterNot(::isSelected)
+            .forEach(::selectItem)
+        if (notifyListener) {
             notifySelectionListener()
         }
     }
 
-    fun selectIndices(indices: List<Int>) {
-        indices.filterNot(::isSelected)
-            .forEach(::selectItem)
-        notifySelectionListener()
-    }
-
-    fun unSelectIndices(indices: List<Int>) {
+    fun unSelectIndices(indices: List<Int>, notifyListener: Boolean = true) {
         indices.filter(::isSelected)
             .forEach(::unSelectItem)
-        notifySelectionListener()
+        if (notifyListener) {
+            notifySelectionListener()
+        }
     }
 
     private fun notifySelectionListener() {
