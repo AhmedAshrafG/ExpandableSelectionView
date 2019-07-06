@@ -31,7 +31,7 @@ In your module level gradle file
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.ashrafDoubleO7:ExpandableSelectionView:1.0'
+    implementation 'com.github.ashrafDoubleO7:ExpandableSelectionView:1.0.1'
 }
 ```
 ## Basic Usage
@@ -86,11 +86,14 @@ multiSelectionView.unSelectIndices(listOf(1, 2, 3))
 
 // To select an index programmatically
 singleSelectionView.selectIndex(1)
-
 // Or in case of the ExpandableMultiSelectionView
 multiSelectionView.selectIndex(1)
 // Or
 multiSelectionView.selectIndices(listOf(1, 2, 3))
+/** Note: 
+* All selectIndex/Indices functions have an optional parameter that controls notifying the listener
+* (notifyListener: Boolean = true)
+**/
 
 // Set the component's state
 singleSelectionView.setState(ExpandableSelectionView.State.Expanded)
