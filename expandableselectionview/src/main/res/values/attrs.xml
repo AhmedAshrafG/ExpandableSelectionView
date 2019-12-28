@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<declare-styleable name="ExpandableSelectionView">
+		<!-- Standard attributes, note "android:" prefix and no format attribute -->
+		<!--https://stackoverflow.com/questions/9732705/use-declare-styleable-to-set-custom-component-input-type/10361617#10361617-->
+		<attr name="android:background" format="reference" />
+
 		<attr name="maximumHeight" format="dimension" />
-		<attr name="background" format="reference" />
 		<attr name="dividerColor" format="color" />
 		<attr name="dividerVisibility" format="boolean" />
 		<attr name="scrollBarsVisibility" format="boolean" />

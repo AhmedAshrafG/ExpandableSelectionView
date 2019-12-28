@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.Transformation
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
+import kotlin.math.min
 
 fun ViewGroup.inflate(@LayoutRes resId: Int, attachToRoot: Boolean = false): View =
     LayoutInflater.from(context).inflate(resId, this, attachToRoot)
@@ -22,7 +23,7 @@ fun View.expand(
     completionListener: (() -> Unit)? = null
 ) {
     measure(MATCH_PARENT, WRAP_CONTENT)
-    val targetHeight = Math.min(measuredHeight, maxExpandedHeight)
+    val targetHeight = min(measuredHeight, maxExpandedHeight)
 
     // Older versions of android (pre API 21) cancel animations for views with a height of 0.
     layoutParams.height = 1

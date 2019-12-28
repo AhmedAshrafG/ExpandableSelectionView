@@ -16,7 +16,7 @@
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
-		android:textColor="#ff5c6979"
+		android:textColor="@color/text_color"
 		android:textColorHint="#ff8b999f"
 		android:textSize="12sp"
 		tools:text="@string/app_name"
