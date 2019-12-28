@@ -4,6 +4,8 @@
 		<!-- Standard attributes, note "android:" prefix and no format attribute -->
 		<!--https://stackoverflow.com/questions/9732705/use-declare-styleable-to-set-custom-component-input-type/10361617#10361617-->
 		<attr name="android:background" format="reference" />
+		<attr name="android:entries"/>
+		<attr name="android:hint"/>
 
 		<attr name="maximumHeight" format="dimension" />
 		<attr name="dividerColor" format="color" />

@@ -14,9 +14,12 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ashraf007.expandableselectionview.R
+import com.ashraf007.expandableselectionview.adapter.BasicStringAdapter
 import com.ashraf007.expandableselectionview.adapter.ExpandableItemAdapter
 import com.ashraf007.expandableselectionview.adapter.ExpandableItemRecyclerAdapter
 import com.ashraf007.expandableselectionview.extension.inflate
+import java.io.InvalidObjectException
+import java.util.*
 
 abstract class ExpandableSelectionView @JvmOverloads constructor(
     context: Context,
@@ -37,6 +40,8 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     private var maxHeight: Int = Int.MAX_VALUE
     private var animationDuration: Long = DEFAULT_ANIMATION_DURATION
     private var selectedIndices: MutableList<Int> = mutableListOf()
+    private var entriesAttribute: Int? = null
+    private var hintString: CharSequence? = null
 
     private var expandableSelectionAdapter: ExpandableItemAdapter? = null
     private var recyclerAdapter: ExpandableItemRecyclerAdapter? = null
@@ -63,6 +68,21 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
 
         this.addView(contentLayout)
         this.addView(errorLabel)
+
+        if (entriesAttribute != 0) {
+
+            val mItemList: List<String> = listOf(
+                *context.resources.getStringArray(
+                    entriesAttribute!!
+                )
+            )
+
+            val adapter = BasicStringAdapter(mItemList, hintString?.let { hintString.toString()})
+
+            setAdapter(adapter)
+        } else if (hintString != null) {
+            throw InvalidObjectException("'hint' text can only be supplied when 'entries' are included.")
+        }
     }
 
     fun setAdapter(adapter: ExpandableItemAdapter) {
@@ -100,11 +120,15 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
     }
 
     private fun extractAttributes(attrs: AttributeSet) {
+
+
         context.withStyledAttributes(
             attrs,
             R.styleable.ExpandableSelectionView, 0, 0
         ) {
-            bgDrawable = getDrawable(R.styleable.ExpandableSelectionView_android_background) ?: bgDrawable
+
+            bgDrawable = getDrawable(R.styleable.ExpandableSelectionView_android_background)
+                ?: bgDrawable
             maxHeight = getLayoutDimension(
                 R.styleable.ExpandableSelectionView_maximumHeight,
                 maxHeight
@@ -125,6 +149,11 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
                 R.styleable.ExpandableSelectionView_animationDuration,
                 animationDuration.toInt()
             ).toLong()
+            entriesAttribute = attrs.getAttributeResourceValue(
+                R.styleable.ExpandableSelectionView_android_entries,
+                0
+            )
+            hintString = getText(R.styleable.ExpandableSelectionView_android_hint)
         }
     }
 

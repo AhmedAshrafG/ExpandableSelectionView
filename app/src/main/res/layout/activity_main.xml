@@ -12,8 +12,43 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical"
 		android:padding="16dp"
-		tools:context=".MainActivity"
-		>
+		tools:context=".MainActivity">
+
+		<com.ashraf007.expandableselectionview.ExpandableSingleSelectionView
+			android:id="@+id/singleSelectionWithEntries"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/bg_expandable_selection_view"
+			android:entries="@array/ListOfDarkModes"
+			android:hint="@string/darkModeHint"
+			app:dividerVisibility="true"
+			app:scrollBarsVisibility="false" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="I'm gonna be pushed down"
+			tools:ignore="HardcodedText" />
+
+		<com.ashraf007.expandableselectionview.ExpandableMultiSelectionView
+			android:id="@+id/multipleSelectionWithEntries"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/bg_expandable_selection_view"
+			android:entries="@array/ListOfStates"
+			android:hint="Select a state"
+			app:dividerVisibility="true"
+			app:scrollBarsVisibility="false" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="I'm also gonna be pushed down"
+			tools:ignore="HardcodedText" />
 
 		<com.ashraf007.expandableselectionview.ExpandableSingleSelectionView
 			android:id="@+id/singleSelectionView"
@@ -22,16 +57,14 @@
 			android:layout_marginBottom="16dp"
 			android:background="@drawable/bg_expandable_selection_view"
 			app:dividerVisibility="true"
-			app:scrollBarsVisibility="false"
-			/>
+			app:scrollBarsVisibility="false" />
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
-			android:text="I'm gonna be pushed down"
-			tools:ignore="HardcodedText"
-			/>
+			android:text="Same goes to me"
+			tools:ignore="HardcodedText" />
 
 		<com.ashraf007.expandableselectionview.ExpandableMultiSelectionView
 			android:id="@+id/multiSelectionView"
@@ -39,16 +72,14 @@
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
 			app:dividerVisibility="true"
-			app:maximumHeight="150dp"
-			/>
+			app:maximumHeight="150dp" />
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
-			android:text="Same goes to me"
-			tools:ignore="HardcodedText"
-			/>
+			android:text="and the same goes to me"
+			tools:ignore="HardcodedText" />
 
 	</LinearLayout>
 </androidx.core.widget.NestedScrollView>
