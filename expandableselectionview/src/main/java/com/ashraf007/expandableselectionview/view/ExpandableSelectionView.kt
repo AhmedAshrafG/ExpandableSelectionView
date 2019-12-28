@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getDrawable
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,7 +73,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
             ::isSelected
         ).also {
             it.showDividers = showDividers
-            it.dividerColor = dividerColor
+            it.dividerColor = ResourcesCompat.getColor(resources, R.color.text_color, null)
         }
         setRecyclerAdapter(recyclerAdapter)
         addContentViews(adapter)
@@ -103,7 +104,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
             attrs,
             R.styleable.ExpandableSelectionView, 0, 0
         ) {
-            bgDrawable = getDrawable(R.styleable.ExpandableSelectionView_background) ?: bgDrawable
+            bgDrawable = getDrawable(R.styleable.ExpandableSelectionView_android_background) ?: bgDrawable
             maxHeight = getLayoutDimension(
                 R.styleable.ExpandableSelectionView_maximumHeight,
                 maxHeight

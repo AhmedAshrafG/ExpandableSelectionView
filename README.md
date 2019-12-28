@@ -4,6 +4,12 @@
 
 Expandable selection view is a dropdown selection view that unlike Android Spinners, pushes views down providing a better user experience.
 
+### Changes:
+A fork of [Expandable Selection View](https://github.com/ashrafDoubleO7/ExpandableSelectionView) 
+- adding support for all Android DarkModes
+- Update to attr to support standard 'android:background' rather than custom 'app:background'
+- Updated to latest gradle and latest Kotlin versions
+
 <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/single.gif" width="350" height="650"> <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/multi.gif" width="350" height="650">
 
 ---
@@ -31,7 +37,7 @@ In your module level gradle file
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.ashrafDoubleO7:ExpandableSelectionView:1.0.1'
+    implementation 'com.github.kenargo:ExpandableSelectionView:1.1.0'
 }
 ```
 ## Basic Usage
@@ -112,7 +118,7 @@ You can customize how the component should look and behave through xml using one
     android:id="@+id/singleSelectionView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:background="@drawable/bg_expandable_selection_view_2"
+    android:background="@drawable/bg_expandable_selection_view_2"
     app:dividerVisibility="true"
     app:scrollBarsVisibility="false"
     app:animationDuration="300"

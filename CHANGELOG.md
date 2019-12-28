@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2019-12-27
+### Added
+- adding support for all Android DarkModes
+### Changed
+- Update to attr to support standard 'android:background' rather than custom 'app:background'
+- Updated to latest gradle and latest Kotlin versions
 ## [1.0.1] - 2019-07-06
 ### Added
 - Select silently parameter in all select index/indices functions
