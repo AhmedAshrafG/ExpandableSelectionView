@@ -1,6 +1,6 @@
 ## Expandable Selection View
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MinSdk: 17](https://img.shields.io/badge/minSdk-17-green.svg)](https://developer.android.com/about/versions/android-4.0) [![write: Kotlin](https://img.shields.io/badge/write-Kotlin-orange.svg)](https://kotlinlang.org/) [![](https://jitpack.io/v/ashrafDoubleO7/ExpandableSelectionView.svg)](https://jitpack.io/#ashrafDoubleO7/ExpandableSelectionView)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MinSdk: 17](https://img.shields.io/badge/minSdk-17-green.svg)](https://developer.android.com/about/versions/android-4.0) [![write: Kotlin](https://img.shields.io/badge/write-Kotlin-orange.svg)](https://kotlinlang.org/) [![](https://jitpack.io/v/kenargo/ExpandableSelectionView.svg)](https://jitpack.io/#kenargo/ExpandableSelectionView)
 
 Expandable selection view is a dropdown selection view that unlike Android Spinners, pushes views down providing a better user experience.
 
@@ -9,6 +9,7 @@ A fork of [Expandable Selection View](https://github.com/ashrafDoubleO7/Expandab
 - adding support for all Android DarkModes
 - Update to attr to support standard 'android:background' rather than custom 'app:background'
 - Updated to latest gradle and latest Kotlin versions
+- Added attribute 'android:entries' and 'android:hint' allowing list and hint text to be added using XML
 
 <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/single.gif" width="350" height="650"> <img src="https://github.com/ashrafDoubleO7/ExpandableSelectionView/blob/master/showcase-files/multi.gif" width="350" height="650">
 
@@ -37,7 +38,7 @@ In your module level gradle file
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.kenargo:ExpandableSelectionView:1.1.0'
+    implementation 'com.github.kenargo:ExpandableSelectionView:1.1.1'
 }
 ```
 ## Basic Usage

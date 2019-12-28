@@ -10,12 +10,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val savedDarkModeStateID = "SavedDarkModeState"
+    private val savedStateID = "SavedStateID"
+    private val savedGenderID = "SavedGenderID"
+    private val savedCountriesID = "SavedCountriesID"
+
     private var currentDarkModeTheme = 0
+    private var currentStateSelection: List<Int>? = null
+    private var currentGenderSelection = 0
+    private var currentCountriesSelection = listOf(2, 4)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             currentDarkModeTheme = savedInstanceState.getInt(savedDarkModeStateID)
+            currentStateSelection = savedInstanceState.getIntArray(savedStateID)!!.toList()
+            currentGenderSelection = savedInstanceState.getInt(savedGenderID)
+            currentCountriesSelection = savedInstanceState.getIntArray(savedCountriesID)!!.toList()
+        }
 
         // https://blog.iamsuleiman.com/daynight-theme-android-tutorial-example/
         //
@@ -26,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // MODE_NIGHT_NO – Tells the app to never use night mode, regardless of time / location.
         // MODE_NIGHT_YES –  Tells app to use night mode always, regardless of time / location.
 
-        var newDarkModeTheme: Int
+        val newDarkModeTheme: Int
 
         when (currentDarkModeTheme) {
             0 -> {
@@ -51,30 +62,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initSingleSelectionWithEntries()
         initSingleSelectionView()
+        initMiltiSelectionWithEntries()
         initMultiSelectionView()
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
         outState.putInt(savedDarkModeStateID, currentDarkModeTheme)
+
+        outState.putIntArray(savedStateID, multipleSelectionWithEntries.selectedIndices.toIntArray())
+
+        singleSelectionWithEntries.selectedIndex?.let {
+            outState.putInt(savedGenderID, singleSelectionWithEntries.selectedIndex!!)
+        }
+
+        outState.putIntArray(savedCountriesID, multiSelectionView.selectedIndices.toIntArray())
     }
 
-    private fun initSingleSelectionView() {
-        val genders = listOf(
-            "Follow System",
-            "Auto Battery",
-            "Dark Mode",
-            "Light Mode"
-        )
+    private fun initSingleSelectionWithEntries() {
 
-        val adapter = BasicStringAdapter(genders, "Select Gender..")
+        singleSelectionWithEntries.selectIndex(currentDarkModeTheme)
 
-        singleSelectionView.setAdapter(adapter)
-        singleSelectionView.selectIndex(currentDarkModeTheme, false)
-
-        singleSelectionView.selectionListener = {
+        singleSelectionWithEntries.selectionListener = {
             Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
 
             currentDarkModeTheme = it?.also {
@@ -82,6 +95,29 @@ class MainActivity : AppCompatActivity() {
                     recreate()
                 }
             }!!
+        }
+    }
+
+    private fun initMiltiSelectionWithEntries() {
+        currentStateSelection?.let {
+            multipleSelectionWithEntries.selectIndices(currentStateSelection!!)
+        }
+    }
+
+    private fun initSingleSelectionView() {
+        val genders = listOf(
+            "Male",
+            "Female",
+            "I'd rather not say"
+        )
+
+        val adapter = BasicStringAdapter(genders, "Select Gender..")
+
+        singleSelectionView.setAdapter(adapter)
+        singleSelectionView.selectIndex(currentGenderSelection, false)
+
+        singleSelectionView.selectionListener = {
+            Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
         }
 
         singleSelectionView.autoCollapseOnSelection = false
@@ -102,7 +138,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = BasicStringAdapter(languages, "Language Spoken")
 
         multiSelectionView.setAdapter(adapter)
-        multiSelectionView.selectIndices(listOf(2, 4), false)
+        multiSelectionView.selectIndices(currentCountriesSelection, false)
 
         multiSelectionView.selectionListener = {
             Toast.makeText(this, "SelectedIndices are $it", Toast.LENGTH_SHORT).show()
