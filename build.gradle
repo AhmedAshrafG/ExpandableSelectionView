@@ -2,6 +2,7 @@ buildscript {
 
     ext.versions = [
             'compileSdk'        : 29,
+            'java'              : JavaVersion.VERSION_1_8,
             'kotlin'            : '1.3.61',
             'kotlinKtx'         : '1.1.0',
             'minSdk'            : 17,

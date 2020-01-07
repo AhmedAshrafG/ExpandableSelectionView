@@ -19,7 +19,6 @@ import com.ashraf007.expandableselectionview.adapter.ExpandableItemAdapter
 import com.ashraf007.expandableselectionview.adapter.ExpandableItemRecyclerAdapter
 import com.ashraf007.expandableselectionview.extension.inflate
 import java.io.InvalidObjectException
-import java.util.*
 
 abstract class ExpandableSelectionView @JvmOverloads constructor(
     context: Context,
@@ -77,7 +76,7 @@ abstract class ExpandableSelectionView @JvmOverloads constructor(
                 )
             )
 
-            val adapter = BasicStringAdapter(mItemList, hintString?.let { hintString.toString()})
+            val adapter = BasicStringAdapter(mItemList, hintString?.toString())
 
             setAdapter(adapter)
         } else if (hintString != null) {

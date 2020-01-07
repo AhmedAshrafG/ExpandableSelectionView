@@ -12,7 +12,6 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
 
     var autoCollapseOnSelection: Boolean = true
 
-    var selectionListener: ((Int?) -> Unit)? = null
     val selectedIndex: Int?
         get() = getSelectedIndices().firstOrNull()
 
@@ -49,7 +48,13 @@ class ExpandableSingleSelectionView @JvmOverloads constructor(
         notifySelectionListener(null)
     }
 
+    private var onSelectionChangeListener: Interfaces.SelectedItemChanged? = null
+
+    fun setOnSelectionChange(listener: Interfaces.SelectedItemChanged) {
+        onSelectionChangeListener = listener
+    }
+
     private fun notifySelectionListener(index: Int?) {
-        selectionListener?.invoke(index)
+        onSelectionChangeListener?.onSelectionChange(index)
     }
 }

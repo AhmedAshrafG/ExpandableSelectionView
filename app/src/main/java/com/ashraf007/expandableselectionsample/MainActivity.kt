@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.ashraf007.expandableselectionview.Interfaces
 import com.ashraf007.expandableselectionview.adapter.BasicStringAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         outState.putIntArray(savedStateID, multipleSelectionWithEntries.selectedIndices.toIntArray())
 
         singleSelectionWithEntries.selectedIndex?.let {
-            outState.putInt(savedGenderID, singleSelectionWithEntries.selectedIndex!!)
+            outState.putInt(savedGenderID, it)
         }
 
         outState.putIntArray(savedCountriesID, multiSelectionView.selectedIndices.toIntArray())
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
         singleSelectionWithEntries.selectIndex(currentDarkModeTheme)
 
-        singleSelectionWithEntries.selectionListener = {
+        singleSelectionWithEntries.setOnSelectionChange(Interfaces.SelectedItemChanged {
             Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
 
             currentDarkModeTheme = it?.also {
@@ -95,12 +96,12 @@ class MainActivity : AppCompatActivity() {
                     recreate()
                 }
             }!!
-        }
+        })
     }
 
     private fun initMiltiSelectionWithEntries() {
         currentStateSelection?.let {
-            multipleSelectionWithEntries.selectIndices(currentStateSelection!!)
+            multipleSelectionWithEntries.selectIndices(it)
         }
     }
 
@@ -116,9 +117,9 @@ class MainActivity : AppCompatActivity() {
         singleSelectionView.setAdapter(adapter)
         singleSelectionView.selectIndex(currentGenderSelection, false)
 
-        singleSelectionView.selectionListener = {
+        singleSelectionView.setOnSelectionChange(Interfaces.SelectedItemChanged {
             Toast.makeText(this, "SelectedIndex is $it", Toast.LENGTH_SHORT).show()
-        }
+        })
 
         singleSelectionView.autoCollapseOnSelection = false
     }
@@ -140,8 +141,8 @@ class MainActivity : AppCompatActivity() {
         multiSelectionView.setAdapter(adapter)
         multiSelectionView.selectIndices(currentCountriesSelection, false)
 
-        multiSelectionView.selectionListener = {
+        multiSelectionView.setOnSelectionsChange(Interfaces.SelectedItemsChanged {
             Toast.makeText(this, "SelectedIndices are $it", Toast.LENGTH_SHORT).show()
-        }
+        })
     }
 }

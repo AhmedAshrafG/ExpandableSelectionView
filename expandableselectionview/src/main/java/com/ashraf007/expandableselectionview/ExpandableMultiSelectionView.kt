@@ -10,7 +10,6 @@ class ExpandableMultiSelectionView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ExpandableSelectionView(context, attrs, defStyleAttr) {
 
-    var selectionListener: ((List<Int>) -> Unit)? = null
     val selectedIndices: List<Int>
         get() = getSelectedIndices()
 
@@ -25,7 +24,7 @@ class ExpandableMultiSelectionView @JvmOverloads constructor(
 
     override fun clearSelection() {
         super.clearSelection()
-        selectionListener?.invoke(emptyList())
+        onSelectionsChangeListener?.onSelectionChange(emptyList())
     }
 
     fun selectIndex(index: Int, notifyListener: Boolean = true) {
@@ -62,7 +61,13 @@ class ExpandableMultiSelectionView @JvmOverloads constructor(
         }
     }
 
+    private var onSelectionsChangeListener: Interfaces.SelectedItemsChanged? = null
+
+    fun setOnSelectionsChange(listener: Interfaces.SelectedItemsChanged) {
+        onSelectionsChangeListener = listener
+    }
+
     private fun notifySelectionListener() {
-        selectionListener?.invoke(selectedIndices)
+        onSelectionsChangeListener?.onSelectionChange(selectedIndices)
     }
 }
